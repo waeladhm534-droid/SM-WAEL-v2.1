@@ -32,17 +32,36 @@ button{background:#0d9488;color:white}
 <h3>الأجهزة</h3>
 <div id="list">لا توجد أجهزة</div>
 </div>
-<script>
-let devices=[];
-function add(){
-let n=document.getElementById('name').value;
-let t=document.getElementById('type').value;
-let ip=document.getElementById('ip').value;
-if(!n){alert('اكتب اسم الجهاز');return;}
-devices.push({n,t,ip});
-document.getElementById('list').innerHTML=devices.map(d=>'<p>'+d.n+' - '+d.t+' - '+d.ip+'</p>').join('');
+<s
+let devices = JSON.parse(localStorage.getItem('sm_wael_devices') || '[]');
+
+function render() {
+  document.getElementById('list').innerHTML = devices.map(d =>
+    '<p>' + d.n + ' - ' + d.t + ' - ' + d.ip + '</p>'
+  ).join('');
 }
-</script>
-</body>
+
+function add() {
+  let n = document.getElementById('name').value;
+  let t = document.getElementById('type').value;
+  let ip = document.getElementById('ip').value;
+
+  if (!n || !ip) {
+    alert('أكمل البيانات');
+    return;
+  }
+
+  devices.push({n, t, ip});
+  localStorage.setItem('sm_wael_devices', JSON.stringify(devices));
+  render();
+
+  document.getElementById('name').value = '';
+  document.getElementById('ip').value = '';
+}
+
+render();
+
+  
+</body
 </html>
 

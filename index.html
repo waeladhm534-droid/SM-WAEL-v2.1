@@ -32,7 +32,7 @@ button{background:#0d9488;color:white}
 <h3>الأجهزة</h3>
 <div id="list">لا توجد أجهزة</div>
 </div>
-<s
+<script>
 let devices = JSON.parse(localStorage.getItem('sm_wael_devices') || '[]');
 
 function render() {
@@ -60,9 +60,8 @@ function add() {
 }
 
 render();
-
-  
-</body
+</script>
+  </body
 </html>
 
 a7045324a8135b2a45337aa3b0510d0d264ca944
